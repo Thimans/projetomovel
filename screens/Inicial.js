@@ -3,8 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { Text, TextInput, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Image, ImageBackground } from 'react-native';
 
-const Stack = createNativeStackNavigator()
-
 const Inicial = (props) => {
 
     const goToCriarConta = () =>{
@@ -20,7 +18,7 @@ const Inicial = (props) => {
 
         <View style={styles.subViewVacina}>
 
-          <Text style={styles.subTexto}>Controle as suas  vacina </Text>
+          <Text style={styles.subTexto}>Controle as suas  vacinas </Text>
           <Text style={styles.subTst}>e fique seguro</Text>
         </View>
 
