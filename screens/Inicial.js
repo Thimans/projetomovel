@@ -1,13 +1,14 @@
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { Text, TextInput, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Image, ImageBackground } from 'react-native';
 
 const Inicial = (props) => {
 
-    const goToCriarConta = () =>{
-        props.navigation.navigate('CriarConta')
-    }
+  const goToCriarConta = () => {
+    props.navigation.navigate('CriarConta')
+  }
+  const goToHome = () => {
+    props.navigation.navigate('Home')
+  }
   return (
     <KeyboardAvoidingView style={styles.background}>
       <ImageBackground source={require('../imagens/fundo-vacina.jpg')} style={{ opacity: 0.8 }} >
@@ -17,7 +18,6 @@ const Inicial = (props) => {
         </View>
 
         <View style={styles.subViewVacina}>
-
           <Text style={styles.subTexto}>Controle as suas  vacinas </Text>
           <Text style={styles.subTst}>e fique seguro</Text>
         </View>
@@ -32,7 +32,7 @@ const Inicial = (props) => {
           </View>
           <TextInput style={styles.input} placeholder='Senha' autoCorrect={false} onChangeText={() => { }} />
 
-          <TouchableOpacity style={styles.botSubmit}>
+          <TouchableOpacity style={styles.botSubmit} onPress={goToHome}>
             <Text style={styles.subEntrar}>Entrar</Text>
           </TouchableOpacity>
 
@@ -171,6 +171,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     top: 12,
-}
+  }
 })
 export default Inicial;

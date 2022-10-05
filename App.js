@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Inicial from './screens/Inicial';
 import CriarConta from './screens/CriarConta';
+import Home from './screens/Home';
 
 const Stack = createNativeStackNavigator()
 
@@ -12,6 +13,7 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name='Inicial' component={Inicial} options={{ headerShown: false }} />
         <Stack.Screen name='CriarConta' component={CriarConta} />
+        <Stack.Screen name='Home' component={Home} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   )

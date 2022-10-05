@@ -4,10 +4,7 @@ import { View, Text, Button } from 'react-native';
 const CriarConta = () => {
     return (
         <View>
-            <Text>
-                CriarConta
-            </Text>
-            <Button title="Voltar" />
+            <Text>Estou na tela minhas vacinas</Text>
         </View>
     )
 }
