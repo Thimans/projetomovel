@@ -1,7 +1,10 @@
 import React from 'react';
 import { Text, TextInput, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { useState } from 'react';
 
 const Inicial = (props) => {
+  const [email, setEmail] = useState()
+  const [senha, setSenha] = useState()
 
   const goToCriarConta = () => {
     props.navigation.navigate('CriarConta')
@@ -26,11 +29,11 @@ const Inicial = (props) => {
           <View style={styles.subDados} >
             <Text style={styles.subDados}>Email:</Text>
           </View>
-          <TextInput style={styles.input} placeholder='Email' autoCorrect={false} onChangeText={() => { }} />
+          <TextInput style={styles.input} value={email} placeholder='Email' autoCorrect={false} onChangeText={() => { }} />
           <View style={styles.subDados} >
             <Text style={styles.subDados}>  Senha:</Text>
           </View>
-          <TextInput style={styles.input} placeholder='Senha' autoCorrect={false} onChangeText={() => { }} />
+          <TextInput style={styles.input} value={senha} placeholder='Senha' autoCorrect={false} onChangeText={() => { }} />
 
           <TouchableOpacity style={styles.botSubmit} onPress={goToHome}>
             <Text style={styles.subEntrar}>Entrar</Text>
@@ -51,9 +54,9 @@ const Inicial = (props) => {
 
 const styles = StyleSheet.create({
   background: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    alignItems: 'center',
+    justifyContent: 'space-between',
+
 
   },
   container: {
@@ -109,7 +112,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   texto: {
-    display: 'flex',
     width: 600,
     height: 70,
     left: 320,
@@ -162,7 +164,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
     lineHeight: 30,
     color: '#419ED7',
-    marginTop: 0,
   },
   subDados: {
     right: 80,

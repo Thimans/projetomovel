@@ -13,9 +13,9 @@ const MinhasVacinas = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: '#ADD4D0'
+        alignItems: 'center',
+        backgroundColor: '#ADD4D0',
     },
     input: {
         display: 'flex',
