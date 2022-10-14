@@ -1,16 +1,31 @@
 import React from 'react';
 import { Text, TextInput, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { useState } from 'react';
+import { auth } from '../config/firebase'
+
 
 const Inicial = (props) => {
   const [email, setEmail] = useState()
   const [senha, setSenha] = useState()
 
+  const autenticarUsuario = () => {
+    signInWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => {
+        console.log("Usuário autenticado com sucesso!")
+        props.navigation.navigate('Home')
+      })
+      .catch(() => {
+        console.log("Falha ao autenticar: " + error.message)
+      })
+  }
   const goToCriarConta = () => {
     props.navigation.navigate('CriarConta')
   }
   const goToHome = () => {
     props.navigation.navigate('Home')
+  }
+  const goToForgotPss = () => {
+    props.navigation.navigate('ForgotPss')
   }
   return (
     <KeyboardAvoidingView style={styles.background}>
@@ -29,13 +44,13 @@ const Inicial = (props) => {
           <View style={styles.subDados} >
             <Text style={styles.subDados}>Email:</Text>
           </View>
-          <TextInput style={styles.input} value={email} placeholder='Email' autoCorrect={false} onChangeText={() => { }} />
+          <TextInput style={styles.input} value={email} placeholder='Email' onChangeText={() => { setEmail }} />
           <View style={styles.subDados} >
-            <Text style={styles.subDados}>  Senha:</Text>
+            <Text style={styles.subDados} >  Senha:</Text>
           </View>
-          <TextInput style={styles.input} value={senha} placeholder='Senha' autoCorrect={false} onChangeText={() => { }} />
+          <TextInput style={styles.input} secureTextEntry={true} value={senha} placeholder='Senha' onChangeText={() => { setSenha }} />
 
-          <TouchableOpacity style={styles.botSubmit} onPress={goToHome}>
+          <TouchableOpacity style={styles.botSubmit} onPress={autenticarUsuario}>
             <Text style={styles.subEntrar}>Entrar</Text>
           </TouchableOpacity>
 
@@ -43,7 +58,7 @@ const Inicial = (props) => {
             <Text style={styles.subCriar}>Criar minha conta</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.forgotPss}>
+          <TouchableOpacity style={styles.forgotPss} onPress={goToForgotPss}>
             <Text style={styles.subForgot} >Esqueci minha senha</Text>
           </TouchableOpacity>
         </View>

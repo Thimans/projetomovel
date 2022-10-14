@@ -3,12 +3,9 @@ import { View, Text, StyleSheet, Image } from "react-native";
 
 const MyDrawer = (props) => {
     return (
-        <DrawerContentScrollView {...props}>
-            <View style={styles.container}>
-                <Text style={styles.text}>Menu</Text>
-            </View>
+        <DrawerContentScrollView {...props} style={styles.contDrawer}>
 
-            <DrawerItemList {...props} />
+            <DrawerItemList {...props} style={styles.container} />
             <DrawerItem label="Sair" onPress={() => { props.navigation.pop() }} />
         </DrawerContentScrollView>
     )
@@ -23,7 +20,10 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 24,
     },
-   
+    contDrawer: {
+        backgroundColor: '#C1E7E3'
+    }
+
 })
 
 export default MyDrawer
