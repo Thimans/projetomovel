@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Button, Header, StyleSheet, Image, TextInput } from 'react-native';
-
+import React, { useState } from 'react'
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../config/firebase'
+import { useLinkProps } from '@react-navigation/native'
 import CheckBox from '../components/CheckBox';
 
-
-
-
-const CriarConta = () => {
+const CriarConta = (props) => {
     const [email, setEmail] = useState()
     const [nome, setNome] = useState()
     const [data, setData] = useState()
     const [senha, setSenha] = useState()
     const [rep, setRep] = useState()
+
     const optionsCheck = [{ text: 'Masculino', id: 1 }];
 
     const criarUsuario = () => {
@@ -50,11 +50,11 @@ const CriarConta = () => {
                 <Text style={styles.dados}  >Repetir senha</Text>
                 <TextInput value={rep} secureTextEntry={true} onChangeText={setRep} style={styles.input} />
             </View>
-            
-                <TouchableOpacity style={styles.botao} onPress={criarUsuario} >
-                    <Text style={styles.textBot}>Cadastrar</Text>
-                </TouchableOpacity>
-            
+
+            <TouchableOpacity style={styles.botao} onPress={criarUsuario} >
+                <Text style={styles.textBot}>Cadastrar</Text>
+            </TouchableOpacity>
+
         </View>
 
 

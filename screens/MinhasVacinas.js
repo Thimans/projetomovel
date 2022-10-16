@@ -1,6 +1,6 @@
 import { View, FlatList, Text, StyleSheet, TextInput, ImageBackground, KeyboardAvoidingView, TouchableOpacity } from 'react-native'
-import Button from '../components/Button'
 import CardVacina from '../components/CardVacina'
+
 const listaVacinas = [
     {
         vacina: 'BCG',
@@ -33,26 +33,27 @@ const listaVacinas = [
 
 
 ]
-const MinhasVacinas = () => {
+const MinhasVacinas = (props) => {
     const goToNovaVacina = () => {
+        console.log("FUCK")
         props.navigation.navigate('NovaVacina')
+
+    }
+    const goToEditarCard = () => {
+        props.navigation.navigate('EditarCard')
+
     }
     return (
         <View style={styles.container}>
+
             <View style={styles.subDados}>
-                < TextInput style={styles.input} placeholder='Pesquisar Vacina' autoCorrect={false} onChangeText={() => { }} />
-            </View>
-
-            <View>
-                <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} />} numColumns={2} />
+                <TextInput style={styles.input} placeholder='Pesquisar Vacina' autoCorrect={false} onChangeText={() => { }} />
 
             </View>
+            <TouchableOpacity label='Nova Vacina' style={styles.button} onPress={goToNovaVacina} />
 
-            <TouchableOpacity style={styles.button} >
-                <View>
-                    <Text style={styles.text}>Nova Vacina</Text>
-                </View>
-            </TouchableOpacity>
+            <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} onPress={goToEditarCard} />} numColumns={2} />
+
 
 
         </View>
@@ -80,14 +81,16 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    viewBot: {
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-    },
     button: {
         backgroundColor: '#37BD6D',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
 
 
     },
+    text: {
+        color: 'white',
+        right: 10
+    }
 })
 export default MinhasVacinas

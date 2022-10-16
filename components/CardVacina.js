@@ -1,18 +1,21 @@
 import React from "react"
 import { StyleSheet, Text, View, Dimensions, Image } from 'react-native'
+import { TouchableOpacity } from "react-native-gesture-handler"
 
 const CardVacina = (props) => {
 
     const { item } = props.item
-
+    const { onPress } = props
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>{item.vacina}</Text>
-            <Text style={styles.dose}>{item.dose}</Text>
-            <Text style={styles.data}>{item.data}</Text>
-            <Image style={{ width: 180, height:60}} source={require('../imagens/card.png')} />
-            <Text style={styles.proximaDose}>{item.proximaVacina}</Text>
-        </View>
+        <TouchableOpacity onPress={onPress}>
+            <View style={styles.container}>
+                <Text style={styles.text}>{item.vacina}</Text>
+                <Text style={styles.dose}>{item.dose}</Text>
+                <Text style={styles.data}>{item.data}</Text>
+                <Image style={{ width: 180, height: 60 }} source={require('../imagens/card.png')} />
+                <Text style={styles.proximaDose}>{item.proximaVacina}</Text>
+            </View>
+        </TouchableOpacity>
     )
 }
 

@@ -7,6 +7,7 @@ import Home from './screens/Home';
 import ForgotPss from './screens/ForgotPss';
 import NovaVacina from './screens/NovaVacina';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import EditarCard from './screens/EditarCard';
 
 
 
@@ -20,6 +21,7 @@ const App = () => {
         <Stack.Screen name='Home' component={Home} options={{ headerShown: false }} />
         <Stack.Screen name='ForgotPss' component={ForgotPss} options={{ headerTitleStyle: styles.titleColor, headerTitle: 'MyHealth', headerStyle: { backgroundColor: '#C1E7E3' }, headerLeft: () => <View><Image style={styles.iconInj} source={require('./imagens/injeção.png')} /></View> }} />
         <Stack.Screen name='CriarConta' component={CriarConta} options={{ headerTitleStyle: styles.titleColor, headerTitle: 'MyHealth', headerStyle: { backgroundColor: '#C1E7E3' }, headerLeft: () => <View><Image style={styles.iconInj} source={require('./imagens/injeção.png')} /></View> }} />
+        <Stack.Screen name='EditarCard' component={EditarCard} options={{ headerTitleStyle: styles.titleColor, headerTitle: 'MyHealth', headerStyle: { backgroundColor: '#C1E7E3' }, headerLeft: () => <View><Image style={styles.iconInj} source={require('./imagens/injeção.png')} /></View> }} />
       </Stack.Navigator>
     </NavigationContainer>
   )

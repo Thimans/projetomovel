@@ -4,7 +4,7 @@ import { RadioButton } from 'react-native-paper';
 
 
 const CheckBox = ({ options = [], onChange }) => {
-    const [checked, setChecked] = React.useState('first');
+    const [checked, setChecked] = React.useState('um');
     return (
         <View>
 
@@ -12,13 +12,13 @@ const CheckBox = ({ options = [], onChange }) => {
                 <Text style={styles.text}> Sexo </Text>
                 <RadioButton
                     value="first"
-                    status={checked === 'first' ? 'checked' : 'unchecked'}
+                    status={checked === 'um' ? 'checked' : 'unchecked'}
                     onPress={() => setChecked('first')}
                 />
                 <Text style={styles.txtM}>Masculino</Text>
                 <RadioButton
                     value="second"
-                    status={checked === 'second' ? 'checked' : 'unchecked'}
+                    status={checked === 'dois' ? 'checked' : 'unchecked'}
                     onPress={() => setChecked('second')}
                 />
                 <Text style={styles.txtM}>Feminino</Text>

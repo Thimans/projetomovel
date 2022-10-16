@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, TextInput, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../config/firebase'
 
 
@@ -14,18 +15,18 @@ const Inicial = (props) => {
         console.log("Usuário autenticado com sucesso!")
         props.navigation.navigate('Home')
       })
-      .catch(() => {
+      .catch((error) => {
         console.log("Falha ao autenticar: " + error.message)
       })
   }
   const goToCriarConta = () => {
     props.navigation.navigate('CriarConta')
   }
-  const goToHome = () => {
-    props.navigation.navigate('Home')
-  }
   const goToForgotPss = () => {
     props.navigation.navigate('ForgotPss')
+  }
+  const goToHome = () => {
+    props.navigation.navigate('Home')
   }
   return (
     <KeyboardAvoidingView style={styles.background}>
@@ -39,18 +40,17 @@ const Inicial = (props) => {
           <Text style={styles.subTexto}>Controle as suas  vacinas </Text>
           <Text style={styles.subTst}>e fique seguro</Text>
         </View>
-
         <View style={styles.container}>
           <View style={styles.subDados} >
             <Text style={styles.subDados}>Email:</Text>
           </View>
-          <TextInput style={styles.input} value={email} placeholder='Email' onChangeText={() => { setEmail }} />
+          <TextInput style={styles.input} value={email} placeholder='Email' onChangeText={setEmail} />
           <View style={styles.subDados} >
             <Text style={styles.subDados} >  Senha:</Text>
           </View>
-          <TextInput style={styles.input} secureTextEntry={true} value={senha} placeholder='Senha' onChangeText={() => { setSenha }} />
+          <TextInput style={styles.input} secureTextEntry={true} value={senha} placeholder='Senha' onChangeText={setSenha} />
 
-          <TouchableOpacity style={styles.botSubmit} onPress={autenticarUsuario}>
+          <TouchableOpacity style={styles.botSubmit} onPress={goToHome}>
             <Text style={styles.subEntrar}>Entrar</Text>
           </TouchableOpacity>
 

@@ -1,9 +1,9 @@
-import { Text, Image, StyleSheet, View, backgroundColor, headerTitle, headerTitleStyle, headerStyle } from 'react-native'
+import { Image, StyleSheet } from 'react-native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import MyDrawer from '../components/MyDrawer'
 import MinhasVacinas from './MinhasVacinas'
 import ProximasVacinas from './ProximasVacinas'
-import Button from '../components/Button'
+
 
 const Drawer = createDrawerNavigator()
 
