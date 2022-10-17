@@ -1,20 +1,29 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Modal } from 'react-native'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../config/firebase'
 import { useLinkProps } from '@react-navigation/native'
 import CheckBoxDose from '../components/CheckBoxDose';
-
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { SimpleModal } from '../components/SimpleModal'
 const EditarCard = () => {
 
     const optionsCheck = [{ text: 'Masculino', id: 1 }];
 
-
+    const [isModalVisible, setisModalVisible] = useState(false);
+    const [chooseData, setischooseData] = useState();
+    const changeModalVisible = (bool) => {
+        setisModalVisible(bool)
+    }
+    const setData = (data) => {
+        setischooseData(data);
+    }
     return (
         <View style={styles.container}>
-            <View style={styles.viewDados} >
+            <View style={[styles.viewDados, { right: 50 }]} >
+
                 <Text style={styles.dados} >Data de Vacinação </Text>
-                <TextInput style={styles.input} keyboardType='numeric' />
+                <TextInput style={[styles.input, { width: 150 }]} keyboardType='numeric' />
             </View>
             <View style={styles.viewDados}>
                 <Text style={styles.dados} >Vacina </Text>
@@ -27,7 +36,7 @@ const EditarCard = () => {
             <TouchableOpacity style={styles.selImagem}>
                 <Text style={styles.textSel}>Selecionar uma imagem...</Text>
             </TouchableOpacity>
-            <Image style={{ width: 180, height: 60,right:80}} source={require('../imagens/card.png')} />
+            <Image style={{ width: 180, height: 60, right: 80 }} source={require('../imagens/card.png')} />
             <View style={styles.viewDados}>
                 <Text style={styles.dados} >Próxima Vacina </Text>
                 <TextInput style={styles.input} keyboardType='numeric' />
@@ -36,12 +45,25 @@ const EditarCard = () => {
                 <Text style={styles.textBot}>Salvar Alterações</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.botaoExcluir} >
-                <Image style={[styles.iconInj]} source={require('../imagens/lixeira.png')} />
-                <Text style={styles.textBotEx}>Excluir</Text>
-            </TouchableOpacity>
+            <SafeAreaView style={styles.contSafe}>
 
-        </View>
+                <TouchableOpacity style={styles.touchableOpacity} onPress={() => changeModalVisible(true)} >
+                    <Image style={[styles.iconInj]} source={require('../imagens/lixeira.png')} />
+                    <Text style={styles.textSafe}>Excluir</Text>
+                </TouchableOpacity>
+                <Modal transparent={true}
+                    animationType='fade'
+                    visible={isModalVisible}
+                    nRequestClose={() => changeModalVisible(false)}
+                >
+                    <SimpleModal changeModalVisible={changeModalVisible}
+                        setData={setData}
+                    />
+                </Modal>
+            </SafeAreaView>
+
+
+        </View >
 
 
 
@@ -117,16 +139,16 @@ const styles = StyleSheet.create({
         width: 90,
         height: 20,
         justifyContent: 'center',
-        right: 130,
-        top: 160,
+        right: 140,
+        top: 100,
         backgroundColor: '#FD7979'
     },
     iconInj: {
         width: 15,
-        top: 15,
+        top: 5,
         height: 15,
         flexDirection: 'row',
-        left: 10,
+        right: 30,
     },
     selImagem: {
         width: 180,
@@ -149,6 +171,32 @@ const styles = StyleSheet.create({
         top: 10,
         flexDirection: 'row',
 
+    },
+    iconCalen: {
+        width: 15,
+        top: 15,
+        height: 15,
+        flexDirection: 'row',
+        left: 70,
+    },
+    contSafe: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#FD7979',
+        top: 100,
+        right: 120,
+        height: 30,
+        width: 130,
+
+    },
+    touchableOpacity: {
+        backgroudColor: 'orange',
+        paddingHorizontal: 50
+    },
+    textSafe: {
+        bottom: 10,
+        fontSize: 9,
+        fontWeight: 'bold'
     }
 })
 export default EditarCard

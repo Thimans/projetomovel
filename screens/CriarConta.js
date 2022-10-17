@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../config/firebase'
-import { useLinkProps } from '@react-navigation/native'
 import CheckBox from '../components/CheckBox';
 
 const CriarConta = (props) => {

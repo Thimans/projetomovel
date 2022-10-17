@@ -22,6 +22,7 @@ const App = () => {
         <Stack.Screen name='ForgotPss' component={ForgotPss} options={{ headerTitleStyle: styles.titleColor, headerTitle: 'MyHealth', headerStyle: { backgroundColor: '#C1E7E3' }, headerLeft: () => <View><Image style={styles.iconInj} source={require('./imagens/injeção.png')} /></View> }} />
         <Stack.Screen name='CriarConta' component={CriarConta} options={{ headerTitleStyle: styles.titleColor, headerTitle: 'MyHealth', headerStyle: { backgroundColor: '#C1E7E3' }, headerLeft: () => <View><Image style={styles.iconInj} source={require('./imagens/injeção.png')} /></View> }} />
         <Stack.Screen name='EditarCard' component={EditarCard} options={{ headerTitleStyle: styles.titleColor, headerTitle: 'MyHealth', headerStyle: { backgroundColor: '#C1E7E3' }, headerLeft: () => <View><Image style={styles.iconInj} source={require('./imagens/injeção.png')} /></View> }} />
+        <Stack.Screen name='NovaVacina' component={NovaVacina} options={{ headerTitleStyle: styles.titleColor, headerTitle: 'MyHealth', headerStyle: { backgroundColor: '#C1E7E3' }, headerLeft: () => <View><Image style={styles.iconInj} source={require('./imagens/injeção.png')} /></View> }} />
       </Stack.Navigator>
     </NavigationContainer>
   )

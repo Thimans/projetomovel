@@ -35,7 +35,6 @@ const listaVacinas = [
 ]
 const MinhasVacinas = (props) => {
     const goToNovaVacina = () => {
-        console.log("FUCK")
         props.navigation.navigate('NovaVacina')
 
     }
@@ -47,15 +46,16 @@ const MinhasVacinas = (props) => {
         <View style={styles.container}>
 
             <View style={styles.subDados}>
+
                 <TextInput style={styles.input} placeholder='Pesquisar Vacina' autoCorrect={false} onChangeText={() => { }} />
 
             </View>
-            <TouchableOpacity label='Nova Vacina' style={styles.button} onPress={goToNovaVacina} />
 
             <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} onPress={goToEditarCard} />} numColumns={2} />
 
-
-
+            <TouchableOpacity style={styles.button} onPress={goToNovaVacina}>
+                <Text style={styles.textVacina}>Nova Vacina</Text>
+            </TouchableOpacity>
         </View>
 
     )
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         color: '#222',
         height: 35,
+        top: 10
     },
     subDados: {
 
@@ -83,14 +84,20 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#37BD6D',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         justifyContent: 'center',
+        width: 100,
+        height: 50,
+        bottom: 50
 
 
     },
     text: {
         color: 'white',
         right: 10
+    },
+    textVacina: {
+        color: 'white'
     }
 })
 export default MinhasVacinas

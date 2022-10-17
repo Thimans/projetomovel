@@ -24,10 +24,11 @@ const styles = StyleSheet.create({
     text: {
         fontFamily: 'Averia Libre',
         fontStyle: 'normal',
-        fontSize: 36,
+        fontSize: 25,
         lineHeight: 43,
         textAlign: 'center',
         color: '#3F92C5',
+        right: 70,
     },
     dose: {
         color: 'white',
@@ -39,15 +40,13 @@ const styles = StyleSheet.create({
     },
     data: {
         flex: 1,
-        color: '#8B8B8B',
+        color: 'black',
         textAlign: 'center',
     },
     proximaDose: {
-        color: '#FD7979',
+        color: '#8B8B8B',
         textAlign: 'center',
         width: 180,
-        left: 0
-
 
     }
 
