@@ -1,15 +1,21 @@
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
 import React from 'react'
-
+import { listaVacinas } from '../screens/MinhasVacinas';
 
 const HEIGHT_MODAL = 150;
 const WIDTH = Dimensions.get('window').width;
 
 const SimpleModal = (props) => {
+    const excluirVacina = () => {
+        listaVacinas.splice(props.route.params.item.id, 1)
+        console.log('confere')
+        console.log(props.route.params.item.id)
+        props.navigation.pop()
+    }
 
-    closeModal = (bool,data) =>{
-       props.changeModalVisible(bool);
-       props.setData(data);
+    closeModal = (bool, data) => {
+        props.changeModalVisible(bool);
+        props.setData(data);
     }
     return (
         <TouchableOpacity disabled={true} style={styles.container}
@@ -20,7 +26,7 @@ const SimpleModal = (props) => {
                 </View>
                 <View style={styles.butttonsView}>
                     <TouchableOpacity style={styles.touchableOpacity}>
-                        <Text style={[styles.text, { color: 'white' }]} onPress={() => closeModal(false, 'Ok')}>SIM</Text>
+                        <Text style={[styles.text, { color: 'white' }]} onPress={excluirVacina}>SIM</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={[styles.touchableOpacity, { backgroundColor: '#3F92C5' }]} onPress={() => closeModal(false, 'Cancel')}>
                         <Text style={[styles.text, { color: 'white' }]}>CANCELAR</Text>

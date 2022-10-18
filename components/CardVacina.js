@@ -1,11 +1,12 @@
 import React from "react"
-import { StyleSheet, Text, View, Dimensions, Image } from 'react-native'
-import { TouchableOpacity } from "react-native-gesture-handler"
+import { StyleSheet, Text, View, Dimensions, Image, TouchableOpacity } from 'react-native'
+
 
 const CardVacina = (props) => {
 
     const { item } = props.item
     const { onPress } = props
+
     return (
         <TouchableOpacity onPress={onPress}>
             <View style={styles.container}>

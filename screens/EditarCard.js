@@ -1,15 +1,11 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Modal } from 'react-native'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../config/firebase'
-import { useLinkProps } from '@react-navigation/native'
 import CheckBoxDose from '../components/CheckBoxDose';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { SimpleModal } from '../components/SimpleModal'
-const EditarCard = () => {
+const EditarCard = (props) => {
 
     const optionsCheck = [{ text: 'Masculino', id: 1 }];
-
     const [isModalVisible, setisModalVisible] = useState(false);
     const [chooseData, setischooseData] = useState();
     const changeModalVisible = (bool) => {
@@ -18,6 +14,7 @@ const EditarCard = () => {
     const setData = (data) => {
         setischooseData(data);
     }
+
     return (
         <View style={styles.container}>
             <View style={[styles.viewDados, { right: 50 }]} >

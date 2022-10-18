@@ -1,26 +1,15 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Modal } from 'react-native'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../config/firebase'
-import { useLinkProps } from '@react-navigation/native'
 import CheckBoxDose from '../components/CheckBoxDose';
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { SimpleModal } from '../components/SimpleModal'
+
+
 const NovaVacina = () => {
 
     const optionsCheck = [{ text: 'Masculino', id: 1 }];
 
-    const [isModalVisible, setisModalVisible] = useState(false);
-    const [chooseData, setischooseData] = useState();
-    const changeModalVisible = (bool) => {
-        setisModalVisible(bool)
-    }
-    const setData = (data) => {
-        setischooseData(data);
-    }
     return (
         <View style={styles.container}>
-            <View style={[styles.viewDados,{right:50}]} >
+            <View style={[styles.viewDados, { right: 50 }]} >
 
                 <Text style={styles.dados} >Data de Vacinação </Text>
                 <TextInput style={[styles.input, { width: 150 }]} keyboardType='numeric' />
