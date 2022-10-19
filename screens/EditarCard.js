@@ -1,29 +1,36 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Modal } from 'react-native'
 import CheckBoxDose from '../components/CheckBoxDose';
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { SimpleModal } from '../components/SimpleModal'
+
 const EditarCard = (props) => {
 
     const optionsCheck = [{ text: 'Masculino', id: 1 }];
-    const [isModalVisible, setisModalVisible] = useState(false);
-    const [chooseData, setischooseData] = useState();
-    const changeModalVisible = (bool) => {
-        setisModalVisible(bool)
+    const [excluir, setExcluir] = useState('nao');
+    const openExcluir = () => {
+        setExcluir('excluir');
     }
-    const setData = (data) => {
-        setischooseData(data);
+    const closeExcluir = () => {
+        setExcluir('nao');
     }
 
+    const excluiVacina = () => {
+        props.navigation.navigate('MinhasVacinas',
+            {
+                id: 1,
+                excluiVacina: true,
+            });
+    }
+
+
     return (
-        <View style={styles.container}>
+        <View style={styles.cont}>
             <View style={[styles.viewDados, { right: 50 }]} >
 
                 <Text style={styles.dados} >Data de Vacinação </Text>
                 <TextInput style={[styles.input, { width: 150 }]} keyboardType='numeric' />
             </View>
             <View style={styles.viewDados}>
-                <Text style={styles.dados} >Vacina </Text>
+                <Text style={styles.dados}  >Vacina </Text>
                 <TextInput style={styles.input} />
             </View>
             <View>
@@ -42,25 +49,29 @@ const EditarCard = (props) => {
                 <Text style={styles.textBot}>Salvar Alterações</Text>
             </TouchableOpacity>
 
-            <SafeAreaView style={styles.contSafe}>
+            <TouchableOpacity style={styles.botaoExcluir} onPress={openExcluir}>
+                <Image style={[styles.iconInj, { top: 10 }]} source={require('../imagens/lixeira.png')} />
+                <Text style={styles.textBotEx}>Excluir</Text>
+            </TouchableOpacity>
 
-                <TouchableOpacity style={styles.touchableOpacity} onPress={() => changeModalVisible(true)} >
-                    <Image style={[styles.iconInj]} source={require('../imagens/lixeira.png')} />
-                    <Text style={styles.textSafe}>Excluir</Text>
-                </TouchableOpacity>
-                <Modal transparent={true}
-                    animationType='fade'
-                    visible={isModalVisible}
-                    nRequestClose={() => changeModalVisible(false)}
-                >
-                    <SimpleModal changeModalVisible={changeModalVisible}
-                        setData={setData}
-                    />
-                </Modal>
-            </SafeAreaView>
+            {excluir === 'excluir' &&
+                <View style={styles.Modal}>
+                    <View style={styles.bordaModal}>
+                        <Text style={styles.textExcluir}>Tem certeza que deseja remover essa vacina?</Text>
+                        <View style={styles.cpExcluir}>
+                            <TouchableOpacity style={styles.botaoSim} onPress={excluiVacina}>
+                                <Text style={styles.txtExcluir}>SIM</Text>
+                            </TouchableOpacity>
 
+                            <TouchableOpacity style={styles.botaoNao} onPress={closeExcluir}>
+                                <Text style={styles.txtExcluir}>CANCELAR</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            }
 
-        </View >
+        </View>
 
 
 
@@ -68,7 +79,7 @@ const EditarCard = (props) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    cont: {
         flex: 1,
         backgroundColor: '#ADD5D0',
         alignItems: 'flex-end',
@@ -113,16 +124,14 @@ const styles = StyleSheet.create({
 
     },
     textBotEx: {
-        width: 165,
-        height: 34,
-        right: 35,
+
         fontFamily: 'Averia Libre',
         fontStyle: 'normal',
         fontSize: 12,
         lineHeight: 29,
         textAlign: 'center',
         color: '#FFFFFF',
-        bottom: 5
+        bottom: 10
 
     },
     dados: {
@@ -133,12 +142,13 @@ const styles = StyleSheet.create({
 
     },
     botaoExcluir: {
-        width: 90,
+        width: 100,
         height: 20,
         justifyContent: 'center',
-        right: 140,
-        top: 100,
-        backgroundColor: '#FD7979'
+        right: 130,
+        backgroundColor: '#FD7979',
+        alignItems: 'center',
+        top: 100
     },
     iconInj: {
         width: 15,
@@ -180,20 +190,58 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#FD7979',
-        top: 100,
-        right: 120,
-        height: 30,
-        width: 130,
+
 
     },
     touchableOpacity: {
         backgroudColor: 'orange',
         paddingHorizontal: 50
     },
-    textSafe: {
-        bottom: 10,
-        fontSize: 9,
-        fontWeight: 'bold'
+
+    Modal: {
+        position: 'absolute',
+        height: '100%',
+        width: '100%',
+        backgroundColor: '#FFFFFF',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    bordaModal: {
+        borderWidth: 2,
+        borderColor: '#B9DFDB',
+        margin: 20,
+        alignItems: 'center'
+    },
+    textExcluir: {
+        fontWeight: 'bold',
+        fontSize: 30,
+        color: '#FD7979'
+    },
+    cpExcluir: {
+        flexDirection: 'row',
+        marginVertical: 20
+    },
+    botaoSim: {
+        width: 120,
+        height: 60,
+
+        backgroundColor: '#FF8383',
+        marginHorizontal: 25,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    botaoNao: {
+        width: 160,
+        height: 60,
+
+        backgroundColor: '#3F92C5',
+        marginHorizontal: 25,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    txtExcluir: {
+        color: '#FFFFFF',
+        fontSize: 20
     }
 })
 export default EditarCard
