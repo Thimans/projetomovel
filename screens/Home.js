@@ -11,7 +11,7 @@ const Home = (props) => {
     return (
         <Drawer.Navigator drawerContent={(props) => <MyDrawer {...props} />}  >
             <Drawer.Screen style={styles.title} name="Minhas Vacinas" component={MinhasVacinas}
-                options={{ headerTintColor: '#419ED7', headerStyle: { backgroundColor: '#C1E7E3' }, title: "Minhas Vacinas", drawerIcon: () => (<Image style={[styles.iconInj]} source={require('../imagens/injeção.png')} />) }}
+                options={{ headerTintColor: '#419ED7', headerStyle: { backgroundColor: '#C1E7E3' }, title: "Minhas Vacinas", unmountOnBlur: true, drawerIcon: () => (<Image style={[styles.iconInj]} source={require('../imagens/injeção.png')} />) }}
             />
             <Drawer.Screen name="Próximas Vacinas" component={ProximasVacinas}
                 options={{ headerTintColor: '#419ED7', headerTitleStyle: styles.titleColor, headerTitle: 'Próximas Vacinas', headerStyle: { backgroundColor: '#C1E7E3' }, drawerIcon: () => (<Image style={styles.iconInj} source={require('../imagens/calen.png')} />) }}

@@ -43,8 +43,8 @@ const MinhasVacinas = (props) => {
         props.navigation.navigate('NovaVacina')
 
     }
-    const goToEditarCard = () => {
-        props.navigation.navigate('EditarCard')
+    const goToEditarCard = (item) => {
+        props.navigation.push('EditarCard', { item })
 
     }
     return (
@@ -56,7 +56,7 @@ const MinhasVacinas = (props) => {
 
             </View>
 
-            <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} onPress={goToEditarCard} />} numColumns={2} />
+            <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} onPress={() => goToEditarCard(item)} />} numColumns={2} />
 
             <TouchableOpacity style={styles.button} onPress={goToNovaVacina}>
                 <Text style={styles.textVacina}>Nova Vacina</Text>

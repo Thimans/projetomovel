@@ -6,16 +6,16 @@ import { listaVacinas } from './MinhasVacinas';
 const EditarCard = (props) => {
 
     const optionsCheck = [{ text: 'Masculino', id: 1 }];
-    const [excluir, setExcluir] = useState(true);
+    const [excluir, setExcluir] = useState(false);
     const openExcluir = () => {
         setExcluir(true);
     }
     const closeExcluir = () => {
         setExcluir(false);
     }
-
     const excluiVacina = () => {
-        listaVacinas.splice(props.route.params?.data.id, 1,)
+        listaVacinas[props.route.params?.item.item.id] = null
+        console.log(listaVacinas)
         props.navigation.pop()
     }
     return (

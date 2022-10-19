@@ -6,7 +6,7 @@ import CriarConta from './screens/CriarConta';
 import Home from './screens/Home';
 import ForgotPss from './screens/ForgotPss';
 import NovaVacina from './screens/NovaVacina';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import EditarCard from './screens/EditarCard';
 import CardVacina from './components/CardVacina';
 
