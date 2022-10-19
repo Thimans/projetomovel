@@ -1,27 +1,23 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Modal } from 'react-native'
 import CheckBoxDose from '../components/CheckBoxDose';
+import { listaVacinas } from './MinhasVacinas';
 
 const EditarCard = (props) => {
 
     const optionsCheck = [{ text: 'Masculino', id: 1 }];
-    const [excluir, setExcluir] = useState('nao');
+    const [excluir, setExcluir] = useState(true);
     const openExcluir = () => {
-        setExcluir('excluir');
+        setExcluir(true);
     }
     const closeExcluir = () => {
-        setExcluir('nao');
+        setExcluir(false);
     }
 
     const excluiVacina = () => {
-        props.navigation.navigate('MinhasVacinas',
-            {
-                id: 1,
-                excluiVacina: true,
-            });
+        listaVacinas.splice(props.route.params?.data.id, 1,)
+        props.navigation.pop()
     }
-
-
     return (
         <View style={styles.cont}>
             <View style={[styles.viewDados, { right: 50 }]} >
@@ -30,7 +26,7 @@ const EditarCard = (props) => {
                 <TextInput style={[styles.input, { width: 150 }]} keyboardType='numeric' />
             </View>
             <View style={styles.viewDados}>
-                <Text style={styles.dados}  >Vacina </Text>
+                <Text style={styles.dados} >Vacina </Text>
                 <TextInput style={styles.input} />
             </View>
             <View>
@@ -54,7 +50,7 @@ const EditarCard = (props) => {
                 <Text style={styles.textBotEx}>Excluir</Text>
             </TouchableOpacity>
 
-            {excluir === 'excluir' &&
+            {excluir === true &&
                 <View style={styles.Modal}>
                     <View style={styles.bordaModal}>
                         <Text style={styles.textExcluir}>Tem certeza que deseja remover essa vacina?</Text>

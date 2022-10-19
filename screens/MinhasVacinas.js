@@ -1,49 +1,44 @@
 import { View, FlatList, Text, StyleSheet, TextInput, ImageBackground, KeyboardAvoidingView, TouchableOpacity } from 'react-native'
 import CardVacina from '../components/CardVacina'
 
+export const listaVacinas = [
+    {
+        id: 0,
+        vacina: 'BCG',
+        data: '2022-09-21',
+        dose: 'Dose Única',
+        urlImage: 'http://',
+        proximaVacina: 'Próxima dose em:2024-09-23'
+    },
+    {
+        id: 1,
+        vacina: 'Febre amarela',
+        data: '2022-09-21',
+        dose: '1a dose',
+        urlImage: 'http://',
+        proximaVacina: 'Próxima dose em:2024-09-23'
+    },
+    {
+        id: 2,
+        vacina: 'Sarampo',
+        data: '2022-09-21',
+        dose: '1a dose',
+        urlImage: 'http://',
+        proximaVacina: 'Próxima dose em:2024-09-23'
+    },
+    {
+        id: 3,
+        vacina: 'Poliomelite',
+        data: '2022-09-21',
+        dose: '1a dose',
+        urlImage: 'http://',
+        proximaVacina: 'Próxima dose em:2024-09-23'
+    },
+];
 const MinhasVacinas = (props) => {
-    const listaVacinas = [
-        {
-            id: 0,
-            vacina: 'BCG',
-            data: '2022-09-21',
-            dose: 'Dose Única',
-            urlImage: 'http://',
-            proximaVacina: 'Próxima dose em:2024-09-23'
-        },
-        {
-            id: 1,
-            vacina: 'Febre amarela',
-            data: '2022-09-21',
-            dose: '1a dose',
-            urlImage: 'http://',
-            proximaVacina: 'Próxima dose em:2024-09-23'
-        },
-        {
-            id: 2,
-            vacina: 'Sarampo',
-            data: '2022-09-21',
-            dose: '1a dose',
-            urlImage: 'http://',
-            proximaVacina: 'Próxima dose em:2024-09-23'
-        },
-        {
-            id: 3,
-            vacina: 'Poliomelite',
-            data: '2022-09-21',
-            dose: '1a dose',
-            urlImage: 'http://',
-            proximaVacina: 'Próxima dose em:2024-09-23'
-        },
-    ];
 
-    if (props.route.params?.excluiVacina) {
-        listaVacinas.forEach((vac) => {
-            if (vac.id === props.route.params.vacina.id) {
-                listaVacinas.splice(vac.id - 1, 1);
-            }
-        })
-    }
+
+
     const goToNovaVacina = () => {
         props.navigation.navigate('NovaVacina')
 
